@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "Publish_ForwardTable",
+    name: "Publish_ForwardPages",
     platforms: [.macOS(.v12)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "Publish_ForwardTable",
-            targets: ["Publish_ForwardTable"]),
+            name: "Publish_ForwardPages",
+            targets: ["Publish_ForwardPages"]),
     ],
     dependencies: [
         .package(
@@ -24,13 +24,13 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Publish_ForwardTable",
+            name: "Publish_ForwardPages",
             dependencies: [
                 "Publish",
                 .product(name: "Files", package: "files")
             ]),
         .testTarget(
-            name: "Publish_ForwardTableTests",
-            dependencies: ["Publish_ForwardTable", "Publish"]),
+            name: "Publish_ForwardPagesTests",
+            dependencies: ["Publish_ForwardPages", "Publish"]),
     ]
 )
