@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Forwarding.swift
 //  
 //
 //  Created by Klaus Kneupner on 11/05/2023.
@@ -21,7 +21,7 @@ public struct Forward {
     ///set this to true to avoid checking whether target exists, normally when you forward outside of the site you create
     let pointsOutside: Bool
     
-    init (_ from: String, _ to: String, onPage: String? = nil) {
+    public init (_ from: String, _ to: String, onPage: String? = nil) {
         self.from = from
         self.onPage = onPage
         let pointsOutside = to.starts(with: "http://") || to.starts(with: "https://")
