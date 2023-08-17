@@ -60,11 +60,11 @@ extension PublishingContext {
         }
     }
     
-    fileprivate func throwIfTargetDoesntExist(forward: Forward, fileMode: HTMLFileMode) throws {
+    fileprivate func throwIfTargetDoesntExist(forward: Forward) throws {
         if forward.pointsOutside {
             return // not checking outside
         }
-        let targetPath = forward.getTargetPath(fileMode: fileMode)
+        let targetPath = forward.getTargetPath(fileMode: self.fileMode)
         try ensureFileExists(file: targetPath, message: "Target for ForwardPage doesn't exist: \(targetPath.string)")
     }
 }
@@ -126,7 +126,7 @@ extension Plugin {
             for forward in table {
                 let sourceLocation = fileMode.filePath(string: forward.from)
                 let source = try context.createOutputFile(at: sourceLocation)
-                try context.throwIfTargetDoesntExist(forward: forward, fileMode: fileMode)
+                try context.throwIfTargetDoesntExist(forward: forward)
                 let html = forward.forwardPage
                 try source.write(html.render(indentedBy: nil))
             }
