@@ -121,10 +121,10 @@ extension HTMLFileMode {
 
 extension Plugin {
     
-    static public func createForwardPages(table: ForwardTable, fileMode: HTMLFileMode) throws -> Self {
+    static public func createForwardPages(table: ForwardTable) throws -> Self {
         Plugin(name: stepName) { context in
             for forward in table {
-                let sourceLocation = fileMode.filePath(string: forward.from)
+                let sourceLocation = context.fileMode.filePath(string: forward.from)
                 let source = try context.createOutputFile(at: sourceLocation)
                 try context.throwIfTargetDoesntExist(forward: forward)
                 let html = forward.forwardPage
